@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sigma Chat</title>
+</head>
+<body>
+  <script type="module">
+    import { Prefs } from "{{ url_for('static', filename='js/prefs.js') }}";
+
+    const token = Prefs.getToken();
+    if (token) {
+      window.location.href = "{{ url_for('home') }}";
+    } else {
+      window.location.href = "{{ url_for('login') }}";
+    }
+  </script>
+</body>
+</html>

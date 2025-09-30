@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sigma Chat — New chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <i class="bi bi-arrow-left" id="btnBack" title="Back" style="font-size:1.2rem; margin-right:10px; cursor:pointer;"></i>
+      <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" class="brand__logo-img" />
+      <span class="brand__title">New chat</span>
+    </div>
+    <div class="actions">
+      <i class="bi bi-search" id="btnSearch" title="Search"></i>
+    </div>
+  </header>
+
+  <div id="searchBox" class="search-box" style="display:none;">
+    <input id="searchInput" type="text" placeholder="Search users..." />
+  </div>
+
+  <main>
+    <ul id="userList" class="user-list"></ul>
+    <div id="emptyState" class="empty">No users found</div>
+  </main>
+
+  <script type="module" src="{{ url_for('static', filename='js/addChat.js') }}"></script>
+</body>
+</html>

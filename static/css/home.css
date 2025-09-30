@@ -1,0 +1,166 @@
+/* Reset + page spacing for fixed header */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding-top: 56px; /* equals .topbar height so content isn't hidden */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+/* Top bar (fixed, full width, no gaps) */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #4c84ff;
+  color: #fff;
+  padding: 0 16px;            /* internal padding only */
+  z-index: 1000;              /* stays above content */
+}
+.topbar .brand {
+  display: flex;
+  align-items: center;
+}
+.brand__logo-img {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+.topbar .actions i {
+  font-size: 1.4rem;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+/* Search (sits under fixed bar) */
+.search-box {
+  position: sticky;           /* stays at top of scroll area if long lists */
+  top: 56px;                  /* just under the fixed topbar */
+  padding: 8px 12px;
+  background: #f0f2f5;
+  z-index: 900;               /* below topbar */
+}
+.search-box input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border .15s, box-shadow .15s;
+}
+.search-box input:focus {
+  border-color: #4c84ff;
+  box-shadow: 0 0 0 3px rgba(76,132,255,.15);
+}
+
+/* Main content area */
+main {
+  padding: 0;                 /* no side gaps */
+  background: #fff;
+}
+
+/* User list */
+.user-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  background: #fff;
+  transition: background .12s;
+}
+.user-item:hover {
+  background: #f9f9f9;
+}
+.user-item .avatar {
+  margin-right: 12px;
+  font-size: 2rem;
+  color: #4c84ff;
+}
+.user-item .info .name {
+  font-weight: 600;
+}
+.user-item .info .phone {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  margin: 20px 0;
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: #4c84ff;
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+  z-index: 1100;              /* above list */
+  transition: background .15s, transform .05s;
+}
+.fab:hover { background: #3a6be0; }
+.fab:active { transform: translateY(1px); }
+
+/* Small screens */
+@media (max-width: 480px) {
+  .topbar { padding: 0 12px; }
+  .user-item { padding: 12px; }
+  .topbar .actions i { margin-left: 10px; }
+}
+
+/* Dropdown menu under three-dots */
+.actions { position: relative; }
+.menu {
+  position: absolute;
+  top: 56px;           /* sits under fixed topbar */
+  right: 8px;
+  min-width: 180px;
+  padding: 6px 0;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  display: none;       /* hidden by default */
+  z-index: 1200;
+}
+.menu.show { display: block; }
+.menu-item {
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #222;
+  cursor: pointer;
+}
+.menu-item:hover { background: #f5f7fb; }
+.menu-item.danger { color: #b91c1c; }
+.menu-sep {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 6px 0;
+}

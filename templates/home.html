@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sigma Chat — Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo" class="brand__logo-img" />
+      <span class="brand__title">Sigma Chat</span>
+    </div>
+
+    <div class="actions">
+      <i class="bi bi-search" id="btnSearch" title="Search"></i>
+      <i class="bi bi-three-dots-vertical" id="btnMenu" title="Menu" aria-haspopup="true" aria-expanded="false"></i>
+      <div id="menu" class="menu" role="menu" aria-hidden="true">
+        <button class="menu-item" role="menuitem" id="menuProfile"><i class="bi bi-person"></i>&nbsp; Profile</button>
+        <button class="menu-item" role="menuitem" id="menuSettings"><i class="bi bi-gear"></i>&nbsp; Settings</button>
+        <hr class="menu-sep" />
+        <button class="menu-item danger" role="menuitem" id="logoutBtn"><i class="bi bi-box-arrow-right"></i>&nbsp; Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="searchBox" class="search-box" style="display:none;">
+    <input id="searchInput" type="text" placeholder="Search users..." />
+  </div>
+
+  <main>
+    <ul id="userList" class="user-list"></ul>
+    <div id="emptyState" class="empty">No users found</div>
+  </main>
+
+  <!-- ✅ Fixed: FAB now links to Add Chat route -->
+  <a href="{{ url_for('add_chat') }}" id="fabAddChat" class="fab" aria-label="Start chat">
+    <i class="bi bi-plus"></i>
+  </a>
+
+  <script type="module" src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>
