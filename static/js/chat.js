@@ -4,7 +4,7 @@ import { touchConversation } from './database.js';
 import { io } from 'https://cdn.socket.io/4.7.5/socket.io.esm.min.js';
 
 /* ====== CONFIG: your chat server URL ====== */
-const SOCKET_URL = 'https://chat-server-4ikh.onrender.com/';
+const SOCKET_URL = 'https://www-sigma-chat-com-chat-server.onrender.com/';
 
 /* ------------------ Gatekeeper ------------------ */
 let rawToken = Prefs.getToken();
